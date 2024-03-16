@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vamp TOTP POC</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    </head>
+
+    <body>
+        <div class="columns is-flex is-vcentered", style="height: 100vh; background-color: #7ebbea;">
+            <div class="container">
+                <div class="columns is-centered">
+                    <h1 class="title">
+                        Vamp TOTP POC
+                    </h1>
+                </div>
+                
+                <div class="columns is-centered mt-5">
+                    <div class="box" id="qrcode"></div>
+                </div>
+
+                <div class="columns is-centered mt-5">
+                    <div style="width: 15%">
+                        <input id="totpinput" class="input is-primary is-large" type="text" placeholder="Enter TOTP">
+                    </div>
+
+                    <button id="verifytotp" class="button is-large ml-5" style="background-color: #154a8e; color: #fff">
+                        Verify
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        var totpUrl = "{{ totp_url }}"
+
+        // Create QR Code
+        var qrDiv = document.getElementById("qrcode");
+        new QRCode(qrDiv, totpUrl);
+
+        // Verify QR Code
+        const apiUrl = "http://127.0.0.1:5000/verify";
+
+        var totpInput = document.getElementById("totpinput");
+        var verifyTotpBtn = document.getElementById("verifytotp");
+
+        verifyTotpBtn.onclick = function() {
+            fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "totp": totpInput.value
+                })
+            })
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                
+                return resp.json();
+            })
+            .then(data => {
+                if (data.is_valid) {
+                    alert("Valid OTP!")
+                }
+                else {
+                    alert("Invalid OTP!")
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+    </script>
+</html>
