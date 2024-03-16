@@ -56,8 +56,6 @@ cp .env.sample .env
 python main.py
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Usage
 
 You can use any authenticator app such as google authenticator, authy, etc. After you have installed the app in your android/ios device, follow below steps to proceed:
@@ -84,8 +82,6 @@ Project Link: [https://github.com/Guri-X/Vamp-Py-TOTP-POC](https://github.com/Gu
 ## References
 
 - https://pyauth.github.io/pyotp/
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [Python]: https://img.shields.io/badge/python-FFE467?style=for-the-badge&logo=python&logoColor=blue
 [Python-url]: https://www.python.org/
