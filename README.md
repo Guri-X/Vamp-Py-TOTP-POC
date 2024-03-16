@@ -26,7 +26,7 @@ Follow the below steps in order to step this project on your local machine.
 
 - Clone repository
 ```
-git clone 
+git clone https://github.com/Guri-X/Vamp-Py-TOTP-POC.git
 ```
 
 - Create a virtual environment
@@ -79,7 +79,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Gurvinder Singh - [@Guri_XD](https://twitter.com/Guri_XD) | 
 Email - guri.developer97@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/Guri-X/Vamp-Py-TOTP-POC](https://github.com/Guri-X/Vamp-Py-TOTP-POC)
 
 ## References
 
